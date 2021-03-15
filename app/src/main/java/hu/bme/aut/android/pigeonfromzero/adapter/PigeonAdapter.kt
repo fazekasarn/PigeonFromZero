@@ -1,16 +1,15 @@
 package hu.bme.aut.android.pigeonfromzero.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.android.pigeonfromzero.MainActivity
-import hu.bme.aut.android.pigeonfromzero.R
+import hu.bme.aut.android.pigeonfromzero.DetailsActivity
 import hu.bme.aut.android.pigeonfromzero.data.AppDatabase
 import hu.bme.aut.android.pigeonfromzero.data.Pigeon
-import hu.bme.aut.android.pigeonfromzero.databinding.ActivityMainBinding
 import hu.bme.aut.android.pigeonfromzero.databinding.RowItemBinding
 
 class PigeonAdapter : RecyclerView.Adapter<PigeonAdapter.ViewHolder> {
@@ -62,6 +61,12 @@ class PigeonAdapter : RecyclerView.Adapter<PigeonAdapter.ViewHolder> {
             }
             val alert = builder.create()
             alert.show()
+        }
+
+        holder.itemView.setOnClickListener{
+            val pigeonIntent = Intent(context, DetailsActivity::class.java)
+            pigeonIntent.putExtra("PIGEON_KEY", pigeons[position])
+            context.startActivity(pigeonIntent)
         }
     }
 

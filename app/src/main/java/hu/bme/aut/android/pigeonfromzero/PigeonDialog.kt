@@ -27,7 +27,7 @@ class PigeonDialog : DialogFragment() {
             onPigeonDialogAnswer = context
         } else {
             //miért áll le egy exception dobás miatt?
-            //throw RuntimeException("The Activity does not implement the RecipeHandler interface")
+            //throw RuntimeException("The Activity does not implement the OnPigeonDialogAnswer interface")
         }
     }
 

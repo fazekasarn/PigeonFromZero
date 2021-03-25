@@ -7,11 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import hu.bme.aut.android.pigeonfromzero.DetailsActivity
-import hu.bme.aut.android.pigeonfromzero.MainActivity
-import hu.bme.aut.android.pigeonfromzero.data.Pigeon
-import hu.bme.aut.android.pigeonfromzero.databinding.ActivityDetailsBinding
-import hu.bme.aut.android.pigeonfromzero.databinding.ActivityMainBinding
-import hu.bme.aut.android.pigeonfromzero.databinding.DetailsPigeonBinding
+import hu.bme.aut.android.pigeonfromzero.databinding.FragmentDetailsBinding
+import hu.bme.aut.android.pigeonfromzero.model.Pigeon
 
 class DetailsFragment : Fragment(){
 
@@ -20,10 +17,10 @@ class DetailsFragment : Fragment(){
         const val TAG="DetailsFragment"
     }
 
-    private lateinit var binding : DetailsPigeonBinding
+    private lateinit var binding : FragmentDetailsBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DetailsPigeonBinding.inflate(layoutInflater)
+        binding = FragmentDetailsBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -36,7 +33,7 @@ class DetailsFragment : Fragment(){
         binding.tvNumber.text = pigeon.number
         binding.tvName.text = pigeon.name
         binding.tvBirth.text = pigeon.birth.toString()
-        binding.tvSex.text = pigeon.sex
+        binding.tvSex.text = pigeon.sex.name
 
         binding.bEdit.setOnClickListener{
             val detailsActivity=activity as DetailsActivity

@@ -6,11 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import hu.bme.aut.android.pigeonfromzero.data.AppDatabase
-import hu.bme.aut.android.pigeonfromzero.data.Pigeon
-import hu.bme.aut.android.pigeonfromzero.databinding.DetailsPigeonBinding
-import hu.bme.aut.android.pigeonfromzero.databinding.EditPigeonBinding
+import hu.bme.aut.android.pigeonfromzero.databinding.FragmentEditBinding
+import hu.bme.aut.android.pigeonfromzero.model.Pigeon
 
 class EditFragment : Fragment() {
 
@@ -18,10 +15,10 @@ class EditFragment : Fragment() {
     companion object {
         const val TAG="EditFragment"
     }
-    private lateinit var binding : EditPigeonBinding
+    private lateinit var binding : FragmentEditBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = EditPigeonBinding.inflate(layoutInflater)
+        binding = FragmentEditBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -35,7 +32,7 @@ class EditFragment : Fragment() {
                 binding.etNumber.setText(pigeon.number)
                 binding.etName.setText(pigeon.name)
                 binding.etBirth.setText(pigeon.birth.toString())
-                binding.etSex.setText(pigeon.sex)
+                binding.etSex.setText(pigeon.sex.name)
             }
         }
         binding.bCancel.setOnClickListener{

@@ -4,21 +4,18 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.Spinner
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import hu.bme.aut.android.pigeonfromzero.data.Pigeon
 import hu.bme.aut.android.pigeonfromzero.databinding.DialogPigeonBinding
+import hu.bme.aut.android.pigeonfromzero.model.Pigeon
 
 class PigeonDialog : DialogFragment() {
 
     private lateinit var onPigeonDialogAnswer: OnPigeonDialogAnswer
     private lateinit var binding : DialogPigeonBinding
-
-    private lateinit var etNumber: EditText
-    private lateinit var etName: EditText
-    private lateinit var etBirth: EditText
-    private lateinit var etSex: EditText
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -32,45 +29,40 @@ class PigeonDialog : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        binding = DialogPigeonBinding.inflate(LayoutInflater.from(context))
+
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Új galamb")
-
-        binding = DialogPigeonBinding.inflate(LayoutInflater.from(context))
         builder.setView(binding.root)
-        //val inflater = LayoutInflater.from(context)
-        //val dialogLayout = inflater.inflate(R.layout.dialog_pigeon, null)
-        etNumber = binding.etNumber
-        etName = binding.etName
-        etBirth = binding.etBirth
-        etSex = binding.etSex
-        //builder.setView(dialogLayout)
 
-        builder.setPositiveButton("OK") { dialog, which ->
-            if (etNumber.text.isNotEmpty()) {
-                val arguments = this.arguments
-                if (arguments != null && arguments.containsKey(MainActivity.KEY_ITEM_TO_EDIT)) {
-                    handleItemEdit()
-                } else {
-                    handlePigeonCreate()
-                }
-                //dialog.dismiss()
-            } else {
-                etNumber.error = "Nem lehet üres"
+        binding.spnrSex.adapter = ArrayAdapter(
+            requireContext(), android.R.layout.simple_spinner_item, listOf("HÍM", "TOJÓ", "FIATAL")
+        )
+
+        builder.setPositiveButton("OK") { _, _ ->
+            if (binding.etNumber.text.isNotEmpty()) {
+                    pigeonCreate()
             }
         }
-        builder.setNegativeButton("Vissza") { dialog, which ->
+        builder.setNegativeButton("Vissza") { dialog, _ ->
             dialog.cancel()
         }
         return builder.create()
     }
 
-    private fun handlePigeonCreate() {
+    private fun pigeonCreate() {
+        val selectedSex = when (binding.spnrSex.selectedItemPosition){
+            0 -> Pigeon.Sex.MALE
+            1 -> Pigeon.Sex.FEMALE
+            2 -> Pigeon.Sex.UNKNOWN
+            else -> Pigeon.Sex.UNKNOWN
+        }
         onPigeonDialogAnswer.pigeonCreated(
-            Pigeon(null, etNumber.text.toString(), etName.text.toString(), etBirth.text.toString().toInt(), etSex.text.toString())
+            Pigeon(0, binding.etNumber.text.toString(), binding.etName.text.toString(), binding.etBirth.text.toString().toInt(), selectedSex)
         )
     }
 
-    private fun handleItemEdit() {
-        TODO("Not yet implemented")
+    interface OnPigeonDialogAnswer {
+        fun pigeonCreated(pigeon : Pigeon)
     }
 }

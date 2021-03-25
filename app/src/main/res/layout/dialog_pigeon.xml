@@ -29,12 +29,19 @@
         app:layout_constraintTop_toBottomOf="@id/etName"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
-    <EditText
-        android:id="@+id/etSex"
-        android:hint="Nem"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvSex"
+        android:text="Nem:"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/etBirth"
         app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <Spinner
+        android:id="@+id/spnrSex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/tvSex"
+        app:layout_constraintTop_toTopOf="@id/tvSex"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

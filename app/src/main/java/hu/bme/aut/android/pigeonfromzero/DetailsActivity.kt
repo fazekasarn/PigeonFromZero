@@ -2,15 +2,14 @@ package hu.bme.aut.android.pigeonfromzero
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import hu.bme.aut.android.pigeonfromzero.data.Pigeon
 import hu.bme.aut.android.pigeonfromzero.databinding.ActivityDetailsBinding
-import hu.bme.aut.android.pigeonfromzero.databinding.ActivityMainBinding
 import hu.bme.aut.android.pigeonfromzero.fragments.DetailsFragment
 import hu.bme.aut.android.pigeonfromzero.fragments.EditFragment
+import hu.bme.aut.android.pigeonfromzero.model.Pigeon
 
 class DetailsActivity : AppCompatActivity() {
 
-    lateinit var pigeon :Pigeon
+    lateinit var pigeon : Pigeon
     private lateinit var binding : ActivityDetailsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

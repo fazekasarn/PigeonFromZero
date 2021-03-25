@@ -1,89 +1,57 @@
 package hu.bme.aut.android.pigeonfromzero.adapter
 
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import hu.bme.aut.android.pigeonfromzero.MainActivity
-import hu.bme.aut.android.pigeonfromzero.DetailsActivity
-import hu.bme.aut.android.pigeonfromzero.data.AppDatabase
-import hu.bme.aut.android.pigeonfromzero.data.Pigeon
 import hu.bme.aut.android.pigeonfromzero.databinding.RowItemBinding
+import hu.bme.aut.android.pigeonfromzero.model.Pigeon
 
-class PigeonAdapter : RecyclerView.Adapter<PigeonAdapter.ViewHolder> {
+class PigeonAdapter : ListAdapter<Pigeon, PigeonAdapter.ViewHolder>(itemCallback) {
+
+    companion object{
+        object itemCallback : DiffUtil.ItemCallback<Pigeon>(){
+            override fun areItemsTheSame(oldItem: Pigeon, newItem: Pigeon): Boolean {
+                return oldItem.pigeonId == newItem.pigeonId
+            }
+            override fun areContentsTheSame(oldItem: Pigeon, newItem: Pigeon): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 
     private lateinit var binding : RowItemBinding
+    var pigeonClickListener : PigeonClickListener? = null
 
-    var pigeons = mutableListOf<Pigeon>(
-
-    )
-    val context :Context
-    constructor(context: Context){
-        this.context=context
-    }
-
-    inner class ViewHolder(val binding: RowItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        //val tvNumber = binding.tvNumber
-        //val tvBirth = binding.tvBirth
-        //val tvSex = binding.tvSex
-        //val bDelete = binding.bDelete
-    }
+    inner class ViewHolder(val binding: RowItemBinding) : RecyclerView.ViewHolder(binding.root) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        //val view = LayoutInflater.from(context).inflate(
-        //    R.layout.row_item, parent, false
-        //)
-
         return ViewHolder(RowItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun getItemCount(): Int {
-        return pigeons.size
-    }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentPigeon = pigeons[position]
+        val currentPigeon = getItem(position)
 
         val remainder = currentPigeon.birth%100
-        holder.binding.tvNumber.text = "$remainder-${currentPigeon.number} ${currentPigeon.sex}"
+        val short = when(currentPigeon.sex){
+            Pigeon.Sex.MALE -> "H"
+            Pigeon.Sex.FEMALE -> "T"
+            Pigeon.Sex.UNKNOWN -> "?"
+        }
+        holder.binding.tvNumber.text = "$remainder-${currentPigeon.number} $short"
         holder.binding.tvName.text = currentPigeon.name
 
         holder.binding.bDelete.setOnClickListener {
-            val builder = AlertDialog.Builder(context)
-            builder.setMessage("Biztosan törlöd a galambot?")
-            builder.setPositiveButton("Igen") {
-                dialog, which ->  deletePigeon(holder.adapterPosition)
-            }
-            builder.setNegativeButton("Nem"){
-                dialog, which -> dialog.cancel()
-            }
-            val alert = builder.create()
-            alert.show()
+            pigeonClickListener?.onPigeonDeleteClick(currentPigeon)
         }
-
         holder.itemView.setOnClickListener{
-            val pigeonIntent = Intent(context, DetailsActivity::class.java)
-            pigeonIntent.putExtra("PIGEON_KEY", pigeons[position])
-            context.startActivity(pigeonIntent)
+            pigeonClickListener?.onPigeonClick(currentPigeon)
         }
     }
 
-    private fun deletePigeon(position: Int) {
-        val dbThread = Thread {
-            AppDatabase.getInstance(context).pigeonDao().deletePigeon(pigeons[position])
-            (context as MainActivity).runOnUiThread {
-                pigeons.removeAt(position)
-                notifyItemRemoved(position)
-            }
-        }
-        dbThread.start()
-    }
-
-    fun addPigeon(pigeon :Pigeon){
-        pigeons.add(pigeon)
-        //miért megy enélkül is?
-        //notifyItemInserted(pigeons.lastIndex)
+    interface PigeonClickListener {
+        fun onPigeonClick(pigeon: Pigeon)
+        fun onPigeonDeleteClick(pigeon: Pigeon)
     }
 }

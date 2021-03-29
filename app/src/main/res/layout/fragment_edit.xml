@@ -26,9 +26,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:inputType="number"/>
 
-    <EditText
-        android:id="@+id/etSex"
-        android:layout_width="match_parent"
+    <Spinner
+        android:id="@+id/spnrSex"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/etBirth"
         app:layout_constraintLeft_toLeftOf="parent"/>
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mentés"
-        app:layout_constraintTop_toBottomOf="@+id/etSex"
+        app:layout_constraintTop_toBottomOf="@+id/spnrSex"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/bCancel"/>
 

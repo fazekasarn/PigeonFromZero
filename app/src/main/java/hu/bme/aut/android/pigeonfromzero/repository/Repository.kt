@@ -1,5 +1,6 @@
 package hu.bme.aut.android.pigeonfromzero.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import hu.bme.aut.android.pigeonfromzero.data.PigeonDAO
@@ -19,6 +20,21 @@ class Repository(private val pigeonDao: PigeonDAO) {
             }
     }
 
+    fun findPigeonById(id :Int): Pigeon? {
+        val pidgey = pigeonDao.findPigeonById(id)
+        if (pidgey==null){
+            return pidgey}
+        else
+            return pidgey.toDomainModel()
+    }
+
+    fun getPigeonById(id :Int) : LiveData<Pigeon>{
+        return pigeonDao.getPigeonById(id)
+            .map {
+                roomPigeons-> roomPigeons.toDomainModel()
+            }
+    }
+
     suspend fun insert(pigeon: Pigeon) = withContext(Dispatchers.IO) {
         pigeonDao.insertPigeon(pigeon.toRoomModel())
     }
@@ -26,6 +42,12 @@ class Repository(private val pigeonDao: PigeonDAO) {
     suspend fun delete(pigeon: Pigeon) = withContext(Dispatchers.IO){
         val roomPigeon = pigeonDao.findPigeonById(pigeon.pigeonId) ?: return@withContext
         pigeonDao.deletePigeon(roomPigeon)
+    }
+
+    suspend fun update(pigeon :Pigeon) = withContext(Dispatchers.IO){
+        pigeonDao.updatePigeon(pigeon.toRoomModel())
+        //pigeonDao.insertPigeon(RoomPigeon(0,pigeon.number,pigeon.name, pigeon.birth, pigeon.sex))
+        Log.d("TAG", "REPO")
     }
 
     private fun RoomPigeon.toDomainModel(): Pigeon {
@@ -40,6 +62,7 @@ class Repository(private val pigeonDao: PigeonDAO) {
 
     private fun Pigeon.toRoomModel(): RoomPigeon {
         return RoomPigeon(
+            pigeonId = pigeonId,
             name = name,
             number = number,
             birth = birth,

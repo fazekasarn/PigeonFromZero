@@ -4,29 +4,62 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import hu.bme.aut.android.pigeonfromzero.PigeonDialog
 import hu.bme.aut.android.pigeonfromzero.adapter.PigeonAdapter
 import hu.bme.aut.android.pigeonfromzero.databinding.FragmentHomeBinding
+import hu.bme.aut.android.pigeonfromzero.model.Pigeon
+import hu.bme.aut.android.pigeonfromzero.viewmodel.PigeonListViewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), PigeonAdapter.PigeonClickListener, PigeonDialog.OnPigeonDialogAnswer {
 
     private lateinit var binding : FragmentHomeBinding
+
     lateinit var pigeonAdapter: PigeonAdapter
+    private lateinit var pigeonListViewModel: PigeonListViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        pigeonListViewModel = ViewModelProvider(this).get(PigeonListViewModel::class.java)
+        pigeonListViewModel.allPigeons.observe(viewLifecycleOwner, Observer { pigeons ->
+            pigeonAdapter.submitList(pigeons)
+        })
         binding = FragmentHomeBinding.inflate(layoutInflater)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         initRecyclerView()
-
+        binding.bFloating.setOnClickListener { _ ->
+            PigeonDialog(this).show(requireActivity().supportFragmentManager, "TAG_ITEM")
+        }
+        return binding.root
     }
 
     private fun initRecyclerView() {
         pigeonAdapter = PigeonAdapter()
+        pigeonAdapter.pigeonClickListener = this
         binding.rwPigeon.adapter = pigeonAdapter
+    }
+
+    override fun onPigeonClick(pigeon: Pigeon) {
+        val action = HomeFragmentDirections.actionPigeonSelected(pigeon.pigeonId)
+        findNavController().navigate(action)
+    }
+
+    override fun onPigeonDeleteClick(pigeon: Pigeon) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setMessage("Biztosan törlöd a galambot?")
+        builder.setPositiveButton("Igen") {
+                _, _ -> pigeonListViewModel.delete(pigeon)
+        }
+        builder.setNegativeButton("Nem"){
+                dialog, _ -> dialog.cancel()
+        }
+        val alert = builder.create()
+        alert.show()
+    }
+
+    override fun pigeonCreated(pigeon: Pigeon) {
+        pigeonListViewModel.insert(pigeon)
     }
 }

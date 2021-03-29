@@ -12,6 +12,9 @@ interface PigeonDAO {
     @Query("SELECT * FROM pigeon WHERE pigeonId = :id")
     fun findPigeonById(id :Int?): RoomPigeon?
 
+    @Query("SELECT * FROM pigeon WHERE pigeonId = :id")
+    fun getPigeonById(id :Int?): LiveData<RoomPigeon>
+
     @Insert
     fun insertPigeon(pigeon: RoomPigeon) :Long
 

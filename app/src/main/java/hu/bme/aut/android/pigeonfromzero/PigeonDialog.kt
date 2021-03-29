@@ -12,20 +12,12 @@ import androidx.fragment.app.DialogFragment
 import hu.bme.aut.android.pigeonfromzero.databinding.DialogPigeonBinding
 import hu.bme.aut.android.pigeonfromzero.model.Pigeon
 
-class PigeonDialog : DialogFragment() {
+class PigeonDialog(private var onPigeonDialogAnswer: OnPigeonDialogAnswer) : DialogFragment() {
 
-    private lateinit var onPigeonDialogAnswer: OnPigeonDialogAnswer
     private lateinit var binding : DialogPigeonBinding
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
-        if (context is OnPigeonDialogAnswer) {
-            onPigeonDialogAnswer = context
-        } else {
-            //miért áll le egy exception dobás miatt?
-            //throw RuntimeException("The Activity does not implement the OnPigeonDialogAnswer interface")
-        }
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

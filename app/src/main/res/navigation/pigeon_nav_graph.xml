@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_pigeon_selected"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_pigeon_create"
+            app:destination="@+id/createFragment"/>
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -24,7 +27,7 @@
             app:destination="@id/editFragment" />
         <argument
             android:name="pigeonId"
-            app:argType="integer" />
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/editFragment"
@@ -33,6 +36,12 @@
         tools:layout="@layout/fragment_edit">
         <argument
             android:name="pigeonSelectedId"
-            app:argType="integer" />
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/createFragment"
+        android:name="hu.bme.aut.android.pigeonfromzero.fragments.CreateFragment"
+        android:label="CreateFragment"
+        tools:layout="@layout/fragment_create">
     </fragment>
 </navigation>

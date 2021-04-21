@@ -44,4 +44,42 @@
         app:layout_constraintLeft_toRightOf="@id/tvSex"
         app:layout_constraintTop_toTopOf="@id/tvSex"/>
 
+    <EditText
+        android:id="@+id/etScore"
+        android:hint="Eredmények"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/spnrSex"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvDad"
+        android:text="Apa gyűrűszáma:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etScore"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <Spinner
+        android:id="@+id/spnrDad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/tvDad"
+        app:layout_constraintTop_toTopOf="@id/tvDad"/>
+
+    <TextView
+        android:id="@+id/tvMom"
+        android:text="Anya gyűrűszáma:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/spnrDad"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <Spinner
+        android:id="@+id/spnrMom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/tvMom"
+        app:layout_constraintTop_toTopOf="@id/tvMom"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

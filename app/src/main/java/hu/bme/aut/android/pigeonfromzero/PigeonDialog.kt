@@ -31,6 +31,13 @@ class PigeonDialog(private var onPigeonDialogAnswer: OnPigeonDialogAnswer) : Dia
             requireContext(), android.R.layout.simple_spinner_item, listOf("HÍM", "TOJÓ", "FIATAL")
         )
 
+        binding.spnrDad.adapter = ArrayAdapter(
+            requireContext(), android.R.layout.simple_spinner_item, listOf("HÍM", "TOJÓ", "FIATAL")
+        )
+
+        binding.spnrMom.adapter = ArrayAdapter(
+            requireContext(), android.R.layout.simple_spinner_item, listOf("HÍM", "TOJÓ", "FIATAL")
+        )
         builder.setPositiveButton("OK") { _, _ ->
             if (binding.etNumber.text.isNotEmpty()) {
                     pigeonCreate()
@@ -50,7 +57,7 @@ class PigeonDialog(private var onPigeonDialogAnswer: OnPigeonDialogAnswer) : Dia
             else -> Pigeon.Sex.UNKNOWN
         }
         onPigeonDialogAnswer.pigeonCreated(
-            Pigeon(0, binding.etNumber.text.toString(), binding.etName.text.toString(), binding.etBirth.text.toString().toInt(), selectedSex)
+            Pigeon(binding.etNumber.text.toString(), binding.etName.text.toString(), binding.etBirth.text.toString().toInt(), selectedSex, binding.etScore.text.toString(), "daddy", "mommy")
         )
     }
 

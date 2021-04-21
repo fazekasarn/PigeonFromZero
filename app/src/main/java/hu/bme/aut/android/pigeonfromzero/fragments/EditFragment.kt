@@ -16,10 +16,7 @@ import hu.bme.aut.android.pigeonfromzero.viewmodel.SinglePigeonViewModel
 
 class EditFragment : Fragment() {
 
-    lateinit var ePigeon : Pigeon
-    companion object {
-        const val TAG="EditFragment"
-    }
+    lateinit var choosenPigeon : Pigeon
     private lateinit var binding : FragmentEditBinding
     private lateinit var singlePigeonViewModel : SinglePigeonViewModel
 
@@ -29,15 +26,35 @@ class EditFragment : Fragment() {
         val pId =EditFragmentArgs.fromBundle(requireArguments()).pigeonSelectedId
         singlePigeonViewModel = ViewModelProvider(this).get(SinglePigeonViewModel::class.java)
         singlePigeonViewModel.getPigeonById(pId).observe(viewLifecycleOwner, Observer { pigeon ->
-            //binding = FragmentEditBinding.inflate(layoutInflater)
-            binding.etNumber.setText(pigeon.number)
+            binding.etNumber.setText(pigeon.pigeonId)
             binding.etName.setText(pigeon.name)
             binding.etBirth.setText(pigeon.birth.toString())
             binding.spnrSex.adapter = ArrayAdapter(
                 requireContext(), android.R.layout.simple_spinner_item, listOf("HÍM", "TOJÓ", "FIATAL")
             )
             binding.spnrSex.setSelection(pigeon.sex.ordinal)
-            ePigeon = pigeon
+            binding.etScore.setText(pigeon.scores)
+            singlePigeonViewModel.getIdBySex(Pigeon.Sex.MALE).observe(viewLifecycleOwner, Observer { spinnerData ->
+                val adapt = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, spinnerData)
+                adapt.add("-");
+                binding.spnrDad.adapter = adapt
+                if (pigeon.dadId!=null){
+                    if (spinnerData.indexOf(pigeon.dadId)!=-1)
+                    binding.spnrDad.setSelection(spinnerData.indexOf(pigeon.dadId))
+                } else
+                    binding.spnrDad.setSelection(spinnerData.size-1)
+            })
+            singlePigeonViewModel.getIdBySex(Pigeon.Sex.FEMALE).observe(viewLifecycleOwner, Observer { spinnerData ->
+                val adapt = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, spinnerData)
+                adapt.add("-");
+                binding.spnrMom.adapter = adapt
+                if (pigeon.momId!=null){
+                    binding.spnrMom.setSelection(spinnerData.indexOf(pigeon.momId))
+                } else
+                    binding.spnrMom.setSelection(spinnerData.size-1)
+            })
+
+            choosenPigeon = pigeon
         })
 
         binding.bCancel.setOnClickListener{
@@ -51,9 +68,14 @@ class EditFragment : Fragment() {
                 2 -> Pigeon.Sex.UNKNOWN
                 else -> Pigeon.Sex.UNKNOWN
             }
-            val newPigeon = Pigeon(ePigeon.pigeonId, binding.etNumber.text.toString(), binding.etName.text.toString(), binding.etBirth.text.toString().toInt(), selectedSex)
+            var selectedMom :String? = null
+            if (binding.spnrMom.selectedItem != "-")
+                selectedMom = binding.spnrMom.selectedItem.toString()
+            var selectedDad :String? = null
+            if (binding.spnrDad.selectedItem != "-")
+                selectedDad = binding.spnrDad.selectedItem.toString()
+            val newPigeon = Pigeon(choosenPigeon.pigeonId, binding.etName.text.toString(), binding.etBirth.text.toString().toInt(), selectedSex, binding.etScore.text.toString(), selectedDad, selectedMom)
             singlePigeonViewModel.update(newPigeon)
-            Log.d("TAG", "FRAGMENTVISSZA")
             requireActivity().onBackPressed()
         }
 

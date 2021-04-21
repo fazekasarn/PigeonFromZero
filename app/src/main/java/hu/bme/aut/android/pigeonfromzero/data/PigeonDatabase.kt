@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 @Database(
-    version = 1,
+    version = 3,
     exportSchema = false,
     entities = [RoomPigeon::class]
 )

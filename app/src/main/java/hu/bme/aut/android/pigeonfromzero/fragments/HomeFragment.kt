@@ -15,7 +15,8 @@ import hu.bme.aut.android.pigeonfromzero.databinding.FragmentHomeBinding
 import hu.bme.aut.android.pigeonfromzero.model.Pigeon
 import hu.bme.aut.android.pigeonfromzero.viewmodel.PigeonListViewModel
 
-class HomeFragment : Fragment(), PigeonAdapter.PigeonClickListener, PigeonDialog.OnPigeonDialogAnswer {
+class HomeFragment : Fragment(), PigeonAdapter.PigeonClickListener//, PigeonDialog.OnPigeonDialogAnswer
+{
 
     private lateinit var binding : FragmentHomeBinding
 
@@ -30,7 +31,9 @@ class HomeFragment : Fragment(), PigeonAdapter.PigeonClickListener, PigeonDialog
         binding = FragmentHomeBinding.inflate(layoutInflater)
         initRecyclerView()
         binding.bFloating.setOnClickListener { _ ->
-            PigeonDialog(this).show(requireActivity().supportFragmentManager, "TAG_ITEM")
+            //PigeonDialog(this).show(requireActivity().supportFragmentManager, "TAG_ITEM")
+            val action = HomeFragmentDirections.actionPigeonCreate()
+            findNavController().navigate(action)
         }
         return binding.root
     }
@@ -59,7 +62,7 @@ class HomeFragment : Fragment(), PigeonAdapter.PigeonClickListener, PigeonDialog
         alert.show()
     }
 
-    override fun pigeonCreated(pigeon: Pigeon) {
+   /* override fun pigeonCreated(pigeon: Pigeon) {
         pigeonListViewModel.insert(pigeon)
-    }
+    }*/
 }

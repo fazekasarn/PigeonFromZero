@@ -32,6 +32,27 @@
         app:layout_constraintTop_toBottomOf="@id/tvBirth"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
+    <TextView
+        android:id="@+id/tvScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvSex"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvScore"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvMom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvDad"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
     <Button
         android:id="@+id/bPDF"
         android:text="PDF?"
@@ -45,7 +66,7 @@
         android:text="Edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvSex"
+        app:layout_constraintTop_toBottomOf="@id/tvMom"
         app:layout_constraintLeft_toRightOf="@id/bPDF"
         app:layout_constraintRight_toLeftOf="@id/bCancel"/>
 

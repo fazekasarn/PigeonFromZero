@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tvNumber"
+            android:id="@+id/tvLongNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Number"
@@ -28,7 +28,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Name"
-            app:layout_constraintTop_toBottomOf="@id/tvNumber"
+            app:layout_constraintTop_toBottomOf="@id/tvLongNumber"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/bDelete"
             app:layout_constraintBottom_toBottomOf="parent"

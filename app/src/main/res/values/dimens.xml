@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="gutter">10dp</dimen>
+    <dimen name="first_gen_height">200dp</dimen>
+    <dimen name="parents_offset">15dp</dimen>
+    <dimen name="family_margin">5dp</dimen>
+</resources>

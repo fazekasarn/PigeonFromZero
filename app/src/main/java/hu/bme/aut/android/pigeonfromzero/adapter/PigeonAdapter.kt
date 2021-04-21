@@ -21,7 +21,7 @@ class PigeonAdapter : ListAdapter<Pigeon, PigeonAdapter.ViewHolder>(itemCallback
         }
     }
 
-    private lateinit var binding : RowItemBinding
+    //private lateinit var binding : RowItemBinding
     var pigeonClickListener : PigeonClickListener? = null
 
     inner class ViewHolder(val binding: RowItemBinding) : RecyclerView.ViewHolder(binding.root) {}
@@ -39,7 +39,7 @@ class PigeonAdapter : ListAdapter<Pigeon, PigeonAdapter.ViewHolder>(itemCallback
             Pigeon.Sex.FEMALE -> "T"
             Pigeon.Sex.UNKNOWN -> "?"
         }
-        holder.binding.tvNumber.text = "$remainder-${currentPigeon.number} $short"
+        holder.binding.tvLongNumber.text = "HU-$remainder-${currentPigeon.pigeonId}-$short"
         holder.binding.tvName.text = currentPigeon.name
 
         holder.binding.bDelete.setOnClickListener {

@@ -9,11 +9,13 @@ import java.io.Serializable
 
 @Entity(tableName = "pigeon")
 data class RoomPigeon (
-    @PrimaryKey(autoGenerate = true) var pigeonId: Int = 0,
-    @ColumnInfo(name = "number") var number :String,
+    @PrimaryKey(autoGenerate = false) var pigeonId :String,
     @ColumnInfo(name = "name") var name :String,
     @ColumnInfo(name = "birth") var birth :Int,
-    @ColumnInfo(name = "sex") var sex :Pigeon.Sex
+    @ColumnInfo(name = "sex") var sex :Pigeon.Sex,
+    @ColumnInfo(name = "scores") var scores :String,
+    @ColumnInfo(name = "dadId") var dadId :String?,
+    @ColumnInfo(name = "momId") var momId :String?
 ) : Serializable
 
 class PigeonTypeConverter {

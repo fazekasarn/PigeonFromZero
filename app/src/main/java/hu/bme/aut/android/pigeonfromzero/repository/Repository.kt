@@ -20,7 +20,7 @@ class Repository(private val pigeonDao: PigeonDAO) {
             }
     }
 
-    fun findPigeonById(id :Int): Pigeon? {
+    fun findPigeonById(id :String): Pigeon? {
         val pidgey = pigeonDao.findPigeonById(id)
         if (pidgey==null){
             return pidgey}
@@ -28,11 +28,15 @@ class Repository(private val pigeonDao: PigeonDAO) {
             return pidgey.toDomainModel()
     }
 
-    fun getPigeonById(id :Int) : LiveData<Pigeon>{
+    fun getPigeonById(id :String) : LiveData<Pigeon>{
         return pigeonDao.getPigeonById(id)
             .map {
                 roomPigeons-> roomPigeons.toDomainModel()
             }
+    }
+
+    fun getIdBySex(sex :Pigeon.Sex) :LiveData<List<String>>{
+        return pigeonDao.getIdBySex(sex)
     }
 
     suspend fun insert(pigeon: Pigeon) = withContext(Dispatchers.IO) {
@@ -46,17 +50,17 @@ class Repository(private val pigeonDao: PigeonDAO) {
 
     suspend fun update(pigeon :Pigeon) = withContext(Dispatchers.IO){
         pigeonDao.updatePigeon(pigeon.toRoomModel())
-        //pigeonDao.insertPigeon(RoomPigeon(0,pigeon.number,pigeon.name, pigeon.birth, pigeon.sex))
-        Log.d("TAG", "REPO")
     }
 
     private fun RoomPigeon.toDomainModel(): Pigeon {
         return Pigeon(
             pigeonId = pigeonId,
             name = name,
-            number = number,
             birth = birth,
-            sex = sex
+            sex = sex,
+            scores = scores,
+            dadId = dadId,
+            momId = momId
         )
     }
 
@@ -64,9 +68,11 @@ class Repository(private val pigeonDao: PigeonDAO) {
         return RoomPigeon(
             pigeonId = pigeonId,
             name = name,
-            number = number,
             birth = birth,
-            sex = sex
+            sex = sex,
+            scores = scores,
+            dadId = dadId,
+            momId = momId
         )
     }
 }

@@ -3,6 +3,8 @@ package hu.bme.aut.android.pigeonfromzero.data
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
+import hu.bme.aut.android.pigeonfromzero.model.Pigeon
+
 @Dao
 interface PigeonDAO {
 
@@ -10,10 +12,10 @@ interface PigeonDAO {
     fun findAllPigeons(): LiveData<List<RoomPigeon>>
 
     @Query("SELECT * FROM pigeon WHERE pigeonId = :id")
-    fun findPigeonById(id :Int?): RoomPigeon?
+    fun findPigeonById(id :String?): RoomPigeon?
 
     @Query("SELECT * FROM pigeon WHERE pigeonId = :id")
-    fun getPigeonById(id :Int?): LiveData<RoomPigeon>
+    fun getPigeonById(id :String?): LiveData<RoomPigeon>
 
     @Insert
     fun insertPigeon(pigeon: RoomPigeon) :Long
@@ -23,4 +25,7 @@ interface PigeonDAO {
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updatePigeon(pigeon: RoomPigeon)
+
+    @Query("SELECT pigeonId FROM pigeon WHERE sex= :s")
+    fun getIdBySex(s :Pigeon.Sex)  :LiveData<List<String>>
 }

@@ -2,6 +2,7 @@ package hu.bme.aut.android.pigeonfromzero.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.google.android.material.transition.MaterialContainerTransform
 
 import hu.bme.aut.android.pigeonfromzero.model.Pigeon
 
@@ -28,4 +29,8 @@ interface PigeonDAO {
 
     @Query("SELECT pigeonId FROM pigeon WHERE sex= :s")
     fun getIdBySex(s :Pigeon.Sex)  :LiveData<List<String>>
+
+    @Transaction
+    @Query("SELECT * FROM pigeon")
+    fun getDadWithChildren() :LiveData<List<DadWithChildren>>
 }

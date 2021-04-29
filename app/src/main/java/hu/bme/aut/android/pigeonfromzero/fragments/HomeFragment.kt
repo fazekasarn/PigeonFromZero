@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import hu.bme.aut.android.pigeonfromzero.PigeonDialog
 import hu.bme.aut.android.pigeonfromzero.adapter.PigeonAdapter
 import hu.bme.aut.android.pigeonfromzero.databinding.FragmentHomeBinding
 import hu.bme.aut.android.pigeonfromzero.model.Pigeon
@@ -24,14 +24,14 @@ class HomeFragment : Fragment(), PigeonAdapter.PigeonClickListener//, PigeonDial
     private lateinit var pigeonListViewModel: PigeonListViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentHomeBinding.inflate(layoutInflater)
+        initRecyclerView()
+
         pigeonListViewModel = ViewModelProvider(this).get(PigeonListViewModel::class.java)
         pigeonListViewModel.allPigeons.observe(viewLifecycleOwner, Observer { pigeons ->
             pigeonAdapter.submitList(pigeons)
         })
-        binding = FragmentHomeBinding.inflate(layoutInflater)
-        initRecyclerView()
-        binding.bFloating.setOnClickListener { _ ->
-            //PigeonDialog(this).show(requireActivity().supportFragmentManager, "TAG_ITEM")
+        binding.bFloating.setOnClickListener {
             val action = HomeFragmentDirections.actionPigeonCreate()
             findNavController().navigate(action)
         }
@@ -62,7 +62,4 @@ class HomeFragment : Fragment(), PigeonAdapter.PigeonClickListener//, PigeonDial
         alert.show()
     }
 
-   /* override fun pigeonCreated(pigeon: Pigeon) {
-        pigeonListViewModel.insert(pigeon)
-    }*/
 }

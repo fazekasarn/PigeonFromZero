@@ -34,7 +34,13 @@ class DetailsFragment : Fragment(){
         val pId = DetailsFragmentArgs.fromBundle(requireArguments()).pigeonId
         singlePigeonViewModel = ViewModelProvider(this).get(SinglePigeonViewModel::class.java)
         singlePigeonViewModel.getPigeonById(pId).observe(viewLifecycleOwner, Observer { pigeon ->
-            binding.tvNumber.text = pigeon.pigeonId
+            val remainder = pigeon.birth%100
+            val short = when(pigeon.sex){
+                Pigeon.Sex.MALE -> "H"
+                Pigeon.Sex.FEMALE -> "T"
+                Pigeon.Sex.UNKNOWN -> "?"
+            }
+            binding.tvLongNumber.text = "HU-$remainder-${pigeon.pigeonId}-$short"
             binding.tvName.text = pigeon.name
             binding.tvBirth.text = pigeon.birth.toString()
             binding.tvSex.text = pigeon.sex.name
@@ -55,6 +61,21 @@ class DetailsFragment : Fragment(){
 
         binding.bPDF.setOnClickListener{
             val pdfbinding = PedigreeBinding.inflate(layoutInflater)
+
+            //egy galamb beírása a pdf-be, bruteforce
+            var nameToShow :String
+            if (choosenPigeon.name!=""){
+                nameToShow = "\"${choosenPigeon.name}\""}
+            else nameToShow=""
+            val remainder = choosenPigeon.birth%100
+            val short = when(choosenPigeon.sex){
+                Pigeon.Sex.MALE -> "H"
+                Pigeon.Sex.FEMALE -> "T"
+                Pigeon.Sex.UNKNOWN -> "?"
+            }
+            pdfbinding.tvHeader.text = "$nameToShow HU $remainder-${choosenPigeon.pigeonId} $short"
+            pdfbinding.textView1.text = "HU $remainder-${choosenPigeon.pigeonId} $short\n$nameToShow\n${choosenPigeon.scores}"
+
             val pdfgl = object : PdfGeneratorListener() {
                 override fun onFailure(failureResponse: FailureResponse) {
                     super.onFailure(failureResponse)

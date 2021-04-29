@@ -90,22 +90,24 @@
         app:layout_constraintLeft_toRightOf="@id/tvMom"
         app:layout_constraintTop_toTopOf="@id/tvMom"/>
 
-    <Button
-        android:id="@+id/bCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vissza"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/bCreate"
-        app:layout_constraintTop_toBottomOf="@id/spnrMom"/>
-
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/bCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hozzáad"
-        app:layout_constraintLeft_toRightOf="@id/bCancel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/bCancel"
+        app:layout_constraintTop_toBottomOf="@id/spnrMom"
+        app:icon="@drawable/ic_baseline_check_circle_24"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vissza"
+        app:layout_constraintLeft_toRightOf="@id/bCreate"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spnrMom"/>
+        app:layout_constraintTop_toBottomOf="@id/spnrMom"
+        app:icon="@drawable/ic_baseline_arrow_back_24"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

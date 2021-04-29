@@ -25,14 +25,14 @@ class CreateFragment : Fragment() {
         binding = FragmentCreateBinding.inflate(layoutInflater)
         singlePigeonViewModel = ViewModelProvider(this).get(SinglePigeonViewModel::class.java)
 
-        singlePigeonViewModel.getIdBySex(Pigeon.Sex.MALE).observe(viewLifecycleOwner, Observer { spinnerData ->
+        singlePigeonViewModel.maleSpinnerData.observe(viewLifecycleOwner, Observer { spinnerData ->
             val adapt = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, spinnerData)
             adapt.add("-");
             binding.spnrDad.adapter = adapt
             binding.spnrDad.setSelection(spinnerData.size-1)
         })
 
-        singlePigeonViewModel.getIdBySex(Pigeon.Sex.FEMALE).observe(viewLifecycleOwner, Observer { spinnerData ->
+        singlePigeonViewModel.femaleSpinnerData.observe(viewLifecycleOwner, Observer { spinnerData ->
             val adapt = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, spinnerData)
             adapt.add("-");
             binding.spnrMom.adapter = adapt

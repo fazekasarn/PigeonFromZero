@@ -1,9 +1,6 @@
 package hu.bme.aut.android.pigeonfromzero.data
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.TypeConverter
+import androidx.room.*
 import hu.bme.aut.android.pigeonfromzero.model.Pigeon
 import java.io.Serializable
 
@@ -17,6 +14,15 @@ data class RoomPigeon (
     @ColumnInfo(name = "dadId") var dadId :String?,
     @ColumnInfo(name = "momId") var momId :String?
 ) : Serializable
+
+data class DadWithChildren(
+    @Embedded val pigeon :RoomPigeon,
+    @Relation(
+        parentColumn = "pigeonId",
+        entityColumn = "dadId"
+    )
+    val children : List<RoomPigeon>
+)
 
 class PigeonTypeConverter {
 

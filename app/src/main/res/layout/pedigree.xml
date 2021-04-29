@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="something"
+            type="hu.bme.aut.android.pigeonfromzero.model.Pigeon" />
+    </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="2631px"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="2631px">
 
         <TextView
             android:id="@+id/tvHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Super Talent NL 14-1566884 M"
             android:textAlignment="center"
-            android:textSize="18sp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_margin="10px"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/textView21"/>
 
         <TextView
             android:id="@+id/textView1"
@@ -43,7 +43,7 @@
             android:layout_height="@dimen/first_gen_height"
             android:layout_marginStart="@dimen/parents_offset"
             android:background="@drawable/border"
-            android:text="NL 05-2036507 M"
+            android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/placeholder_view"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/textView21"
@@ -54,7 +54,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/first_gen_height"
             android:background="@drawable/border"
-            android:text="NL 08-1952434 V"
+            android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/tvFooter"
             app:layout_constraintLeft_toLeftOf="@id/textView2"
             app:layout_constraintRight_toRightOf="@id/textView2"
@@ -387,9 +387,10 @@
             android:id="@+id/tvFooter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/border"
             android:singleLine="false"
             android:text="Fazekas Károly\nTel: +36 20 123 4567\nPilisvörösvár"
+            android:textSize="15sp"
+            android:layout_margin="20px"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -401,5 +402,5 @@
             app:layout_constraintTop_toBottomOf="@id/tvHeader"
             app:layout_constraintBottom_toTopOf="@id/tvFooter"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

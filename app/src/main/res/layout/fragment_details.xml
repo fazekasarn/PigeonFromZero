@@ -5,79 +5,145 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/tvNumber"
-        android:layout_width="match_parent"
+        android:id="@+id/tvLongNumber"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Név:"
+        app:layout_constraintTop_toBottomOf="@id/tvLongNumber"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <TextView
         android:id="@+id/tvName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvNumber"
+        android:layout_marginStart="@dimen/details_margin"
+        android:textSize="@dimen/details_textsize"
+        app:layout_constraintTop_toBottomOf="@id/tvNameLabel"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvBirthLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Született:"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <TextView
         android:id="@+id/tvBirth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvName"
+        android:layout_marginStart="@dimen/details_margin"
+        android:textSize="@dimen/details_textsize"
+        app:layout_constraintTop_toBottomOf="@id/tvBirthLabel"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvSexLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nem:"
+        app:layout_constraintTop_toBottomOf="@id/tvBirth"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <TextView
         android:id="@+id/tvSex"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvBirth"
+        android:layout_marginStart="@dimen/details_margin"
+        android:textSize="@dimen/details_textsize"
+        app:layout_constraintTop_toBottomOf="@id/tvSexLabel"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvScoreLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eredmények:"
+        app:layout_constraintTop_toBottomOf="@id/tvSex"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <TextView
         android:id="@+id/tvScore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvSex"
+        android:layout_marginStart="@dimen/details_margin"
+        android:textSize="@dimen/details_textsize"
+        app:layout_constraintTop_toBottomOf="@id/tvScoreLabel"
         app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDadLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apa:"
+        app:layout_constraintTop_toBottomOf="@id/tvScore"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
     <TextView
         android:id="@+id/tvDad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvScore"
+        android:layout_marginStart="@dimen/details_margin"
+        android:textSize="@dimen/details_textsize"
+        app:layout_constraintTop_toBottomOf="@id/tvDadLabel"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvMomLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anya:"
+        app:layout_constraintTop_toBottomOf="@id/tvDad"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <TextView
         android:id="@+id/tvMom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvDad"
+        android:layout_marginStart="@dimen/details_margin"
+        android:textSize="@dimen/details_textsize"
+        app:layout_constraintTop_toBottomOf="@id/tvMomLabel"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/bPDF"
-        android:text="PDF?"
+        android:text="PDF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/bEdit"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/bEdit"/>
-    <Button
+        app:layout_constraintRight_toLeftOf="@id/bEdit"
+        app:icon="@drawable/ic_baseline_picture_as_pdf_24"/>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/bEdit"
         android:text="Edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tvMom"
         app:layout_constraintLeft_toRightOf="@id/bPDF"
-        app:layout_constraintRight_toLeftOf="@id/bCancel"/>
+        app:layout_constraintRight_toLeftOf="@id/bCancel"
+        app:icon="@drawable/ic_baseline_edit_24"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/bCancel"
-        android:text="Vissza"
-        android:layout_width="wrap_content"
+        android:text="back"
         android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         app:layout_constraintLeft_toRightOf="@id/bEdit"
         app:layout_constraintTop_toTopOf="@id/bEdit"
-        app:layout_constraintRight_toRightOf="parent"/>
-
+        app:layout_constraintRight_toRightOf="parent"
+        app:icon="@drawable/ic_baseline_arrow_back_24"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

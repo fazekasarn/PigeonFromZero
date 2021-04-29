@@ -21,7 +21,6 @@ class PigeonAdapter : ListAdapter<Pigeon, PigeonAdapter.ViewHolder>(itemCallback
         }
     }
 
-    //private lateinit var binding : RowItemBinding
     var pigeonClickListener : PigeonClickListener? = null
 
     inner class ViewHolder(val binding: RowItemBinding) : RecyclerView.ViewHolder(binding.root) {}

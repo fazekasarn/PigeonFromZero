@@ -13,14 +13,14 @@ import kotlinx.coroutines.launch
 class SinglePigeonViewModel : ViewModel(){
     private val repository: Repository
 
-   // val maleSpinnerData : LiveData<List<String>>
-    //val femaleSpinnerData : LiveData<List<String>>
+    val maleSpinnerData : LiveData<List<String>>
+    val femaleSpinnerData : LiveData<List<String>>
 
     init {
         val pigeonDao = PigeonApplication.pigeonDatabase.pigeonDao()
         repository = Repository(pigeonDao)
-        //maleSpinnerData = getIdBySex(Pigeon.Sex.MALE)
-        //femaleSpinnerData = getIdBySex(Pigeon.Sex.FEMALE)
+        maleSpinnerData = getIdBySex(Pigeon.Sex.MALE)
+        femaleSpinnerData = getIdBySex(Pigeon.Sex.FEMALE)
     }
 
     fun insert(pigeon: Pigeon) = viewModelScope.launch {

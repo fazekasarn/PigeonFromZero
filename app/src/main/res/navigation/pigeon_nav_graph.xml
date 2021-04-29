@@ -44,4 +44,8 @@
         android:label="CreateFragment"
         tools:layout="@layout/fragment_create">
     </fragment>
+    <action
+        android:id="@+id/action_home_global"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@id/pigeon_nav_graph.xml" />
 </navigation>

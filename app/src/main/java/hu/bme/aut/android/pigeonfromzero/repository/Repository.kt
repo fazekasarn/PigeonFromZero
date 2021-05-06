@@ -3,6 +3,10 @@ package hu.bme.aut.android.pigeonfromzero.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
+import androidx.room.Room
+import com.google.android.play.core.splitinstall.c
+import hu.bme.aut.android.pigeonfromzero.data.DadWithChildren
+import hu.bme.aut.android.pigeonfromzero.data.MomWithChildren
 import hu.bme.aut.android.pigeonfromzero.data.PigeonDAO
 import hu.bme.aut.android.pigeonfromzero.data.RoomPigeon
 import hu.bme.aut.android.pigeonfromzero.model.Pigeon
@@ -50,6 +54,14 @@ class Repository(private val pigeonDao: PigeonDAO) {
 
     suspend fun update(pigeon :Pigeon) = withContext(Dispatchers.IO){
         pigeonDao.updatePigeon(pigeon.toRoomModel())
+    }
+
+    fun getDadsWithChildren() :LiveData<List<DadWithChildren>>{
+        return pigeonDao.getDadsWithChildren()
+    }
+
+    fun getMomsWithChildren() :LiveData<List<MomWithChildren>>{
+        return pigeonDao.getMomsWithChildren()
     }
 
     private fun RoomPigeon.toDomainModel(): Pigeon {

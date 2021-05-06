@@ -32,5 +32,9 @@ interface PigeonDAO {
 
     @Transaction
     @Query("SELECT * FROM pigeon")
-    fun getDadWithChildren() :LiveData<List<DadWithChildren>>
+    fun getDadsWithChildren() :LiveData<List<DadWithChildren>>
+
+    @Transaction
+    @Query("SELECT * FROM pigeon")
+    fun getMomsWithChildren() :LiveData<List<MomWithChildren>>
 }

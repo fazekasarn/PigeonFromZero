@@ -40,7 +40,7 @@ class EditFragment : Fragment() {
                 binding.spnrDad.adapter = adapt
                 if (pigeon.dadId!=null){
                     if (spinnerData.indexOf(pigeon.dadId)!=-1)
-                    binding.spnrDad.setSelection(spinnerData.indexOf(pigeon.dadId))
+                        binding.spnrDad.setSelection(spinnerData.indexOf(pigeon.dadId))
                 } else
                     binding.spnrDad.setSelection(spinnerData.size-1)
             })

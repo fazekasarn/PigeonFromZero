@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     val PREF_NAME: String = "MySettings"
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -37,17 +38,15 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
 
         //switch kikeresés TODO: megkérdezni, hogy ez így gond-e
-        var menuItem = binding.navView.menu.findItem(R.id.nav_switch)
-        var switch = menuItem.actionView.findViewById(R.id.switch_id) as SwitchCompat
+        val menuItem = binding.navView.menu.findItem(R.id.nav_switch)
+        val switch = menuItem.actionView.findViewById(R.id.switch_id) as SwitchCompat
 
-        //sharedpreferences alapján nightmode beállítása
+        //sharedpreferences alapján switch beállítása
         val sp = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         val nightMode : Boolean = sp.getBoolean("nightMode", false)
         if (nightMode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             switch.isChecked = nightMode
         } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             switch.isChecked = nightMode
         }
 
@@ -76,6 +75,7 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
     }
 
     //actionbarhoz kéne, de miért megy nélküle is?

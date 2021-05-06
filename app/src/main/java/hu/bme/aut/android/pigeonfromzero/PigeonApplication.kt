@@ -1,6 +1,8 @@
 package hu.bme.aut.android.pigeonfromzero
 
 import android.app.Application
+import android.content.Context
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.room.Room
 import hu.bme.aut.android.pigeonfromzero.data.PigeonDatabase
 

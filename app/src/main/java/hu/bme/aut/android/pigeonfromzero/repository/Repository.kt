@@ -5,10 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import androidx.room.Room
 import com.google.android.play.core.splitinstall.c
-import hu.bme.aut.android.pigeonfromzero.data.DadWithChildren
-import hu.bme.aut.android.pigeonfromzero.data.MomWithChildren
-import hu.bme.aut.android.pigeonfromzero.data.PigeonDAO
-import hu.bme.aut.android.pigeonfromzero.data.RoomPigeon
+import hu.bme.aut.android.pigeonfromzero.data.*
 import hu.bme.aut.android.pigeonfromzero.model.Pigeon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -56,12 +53,18 @@ class Repository(private val pigeonDao: PigeonDAO) {
         pigeonDao.updatePigeon(pigeon.toRoomModel())
     }
 
-    fun getDadsWithChildren() :LiveData<List<DadWithChildren>>{
-        return pigeonDao.getDadsWithChildren()
+    fun getDadsWithChildren() :LiveData<List<DadWithChildrenNoRoom>>{
+        return pigeonDao.getDadsWithChildren().map {roomPigeons ->
+            roomPigeons.map {roomPigeon ->
+                roomPigeon.toDomainModel() }
+        }
     }
 
-    fun getMomsWithChildren() :LiveData<List<MomWithChildren>>{
-        return pigeonDao.getMomsWithChildren()
+    fun getMomsWithChildren() : LiveData<List<MomWithChildrenNoRoom>> {
+        return pigeonDao.getMomsWithChildren().map {roomPigeons ->
+            roomPigeons.map {roomPigeon ->
+                roomPigeon.toDomainModel() }
+        }
     }
 
     private fun RoomPigeon.toDomainModel(): Pigeon {
@@ -85,6 +88,22 @@ class Repository(private val pigeonDao: PigeonDAO) {
             scores = scores,
             dadId = dadId,
             momId = momId
+        )
+    }
+
+    private fun DadWithChildren.toDomainModel() : DadWithChildrenNoRoom {
+        return DadWithChildrenNoRoom(
+            pigeon = pigeon.toDomainModel(),
+            children = children.map {roomPigeon ->
+                roomPigeon.toDomainModel() }
+        )
+    }
+
+    private fun MomWithChildren.toDomainModel() : MomWithChildrenNoRoom {
+        return MomWithChildrenNoRoom(
+            pigeon = pigeon.toDomainModel(),
+            children = children.map {roomPigeon ->
+                roomPigeon.toDomainModel() }
         )
     }
 }

@@ -24,6 +24,11 @@ data class DadWithChildren(
     val children : List<RoomPigeon>
 )
 
+data class DadWithChildrenNoRoom(
+    val pigeon :Pigeon,
+    val children : List<Pigeon>
+)
+
 data class MomWithChildren(
     @Embedded val pigeon :RoomPigeon,
     @Relation(
@@ -31,6 +36,11 @@ data class MomWithChildren(
         entityColumn = "momId"
     )
     val children : List<RoomPigeon>
+)
+
+data class MomWithChildrenNoRoom(
+    val pigeon :Pigeon,
+    val children : List<Pigeon>
 )
 
 class PigeonTypeConverter {

@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
         <variable
-            name="something"
-            type="hu.bme.aut.android.pigeonfromzero.model.Pigeon" />
+            name="data"
+            type="hu.bme.aut.android.pigeonfromzero.viewmodel.DetailsViewModel" />
     </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="2631px">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="2631px">
 
         <TextView
             android:id="@+id/tvHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10px"
             android:textAlignment="center"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:layout_margin="10px"
+            app:layout_constraintBottom_toTopOf="@id/textView21"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/textView21"/>
+            android:text="@{data.firstGenParents[0].pigeonId}"/>
 
         <TextView
             android:id="@+id/textView1"
@@ -31,11 +33,11 @@
             android:layout_marginStart="@dimen/family_margin"
             android:layout_marginEnd="@dimen/parents_offset"
             android:background="@drawable/border"
-            android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/tvFooter"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="@id/textView2"
-            app:layout_constraintTop_toBottomOf="@id/tvHeader" />
+            app:layout_constraintTop_toBottomOf="@id/tvHeader"
+            android:text="@{data.basic}"/>
 
         <TextView
             android:id="@+id/textView2"
@@ -342,8 +344,8 @@
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/family_margin"
             android:background="@drawable/border"
-            android:text="NL 051844389 M\nThe Johhny Boy\nSell for 40.000 euro"
             android:ellipsize="end"
+            android:text="NL 051844389 M\nThe Johhny Boy\nSell for 40.000 euro"
             app:layout_constraintBottom_toTopOf="@id/textView414"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
@@ -387,20 +389,20 @@
             android:id="@+id/tvFooter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="0px"
             android:singleLine="false"
             android:text="Fazekas Károly\nTel: +36 20 123 4567\nPilisvörösvár"
             android:textSize="15sp"
-            android:layout_margin="20px"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent" />
 
         <View
             android:id="@+id/placeholder_view"
-            android:layout_height="1dp"
             android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toTopOf="@id/tvFooter"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvHeader"
-            app:layout_constraintBottom_toTopOf="@id/tvFooter"/>
+            app:layout_constraintTop_toBottomOf="@id/tvHeader" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

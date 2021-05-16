@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Új galamb hozzáadása"
+        android:textSize="25sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
@@ -42,15 +43,18 @@
         android:text="Nem:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/etBirth"
+        app:layout_constraintTop_toTopOf="@+id/spnrSex"
+        app:layout_constraintBottom_toBottomOf="@+id/spnrSex"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
-    <Spinner
+    <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spnrSex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
         app:layout_constraintLeft_toRightOf="@id/tvSex"
-        app:layout_constraintTop_toTopOf="@id/tvSex"/>
+        app:layout_constraintTop_toBottomOf="@id/etBirth"
+        android:background="@drawable/spinner_background"
+        android:layout_marginHorizontal="10dp"/>
 
     <EditText
         android:id="@+id/etScore"
@@ -65,30 +69,40 @@
         android:text="Apa gyűrűszáma:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/etScore"
+        app:layout_constraintTop_toTopOf="@+id/spnrDad"
+        app:layout_constraintBottom_toBottomOf="@+id/spnrDad"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <Spinner
         android:id="@+id/spnrDad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
         app:layout_constraintLeft_toRightOf="@id/tvDad"
-        app:layout_constraintTop_toTopOf="@id/tvDad"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etScore"
+        android:background="@drawable/spinner_background"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"/>
 
     <TextView
         android:id="@+id/tvMom"
         android:text="Anya gyűrűszáma:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/spnrDad"
+        app:layout_constraintTop_toTopOf="@+id/spnrMom"
+        app:layout_constraintBottom_toBottomOf="@+id/spnrMom"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <Spinner
         android:id="@+id/spnrMom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
         app:layout_constraintLeft_toRightOf="@id/tvMom"
-        app:layout_constraintTop_toTopOf="@id/tvMom"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spnrDad"
+        android:layout_height="40dp"
+        android:background="@drawable/spinner_background"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bCreate"
@@ -107,7 +121,7 @@
         android:text="Vissza"
         app:layout_constraintLeft_toRightOf="@id/bCreate"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spnrMom"
+        app:layout_constraintTop_toTopOf="@id/bCreate"
         app:icon="@drawable/ic_baseline_arrow_back_24"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

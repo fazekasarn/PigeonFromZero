@@ -2,24 +2,25 @@ package hu.bme.aut.android.pigeonfromzero.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import hu.bme.aut.android.pigeonfromzero.PigeonApplication
-import hu.bme.aut.android.pigeonfromzero.data.DadWithChildren
-import hu.bme.aut.android.pigeonfromzero.data.MomWithChildren
+import hu.bme.aut.android.pigeonfromzero.data.DadWithChildrenNoRoom
+import hu.bme.aut.android.pigeonfromzero.data.MomWithChildrenNoRoom
 import hu.bme.aut.android.pigeonfromzero.model.Pigeon
 import hu.bme.aut.android.pigeonfromzero.repository.Repository
 import kotlinx.coroutines.launch
 
-class SinglePigeonViewModel : ViewModel(){
+class ChangeViewModel () : ViewModel(){
     private val repository: Repository
 
+    //var choosenPigeon: LiveData<Pigeon>
     val allPigeons: LiveData<List<Pigeon>>
     val maleSpinnerData : LiveData<List<String>>
     val femaleSpinnerData : LiveData<List<String>>
-    val allDadsWithChildren :LiveData<List<DadWithChildren>>
-    val allMomsWithChildren :LiveData<List<MomWithChildren>>
+    val allDadsWithChildren :LiveData<List<DadWithChildrenNoRoom>>
+    val allMomsWithChildren :LiveData<List<MomWithChildrenNoRoom>>
+    var firstGenParents: List<Pigeon?> = emptyList()
 
     init {
         val pigeonDao = PigeonApplication.pigeonDatabase.pigeonDao()
@@ -29,6 +30,8 @@ class SinglePigeonViewModel : ViewModel(){
         femaleSpinnerData = getIdBySex(Pigeon.Sex.FEMALE)
         allDadsWithChildren = getDadsWithChildren()
         allMomsWithChildren = getMomsWithChildren()
+        //choosenPigeon = repository.getPigeonById(choosenPigeonId)
+        //Log.d("TAG", choosenPigeonId)
     }
 
     fun insert(pigeon: Pigeon) = viewModelScope.launch {
@@ -47,11 +50,11 @@ class SinglePigeonViewModel : ViewModel(){
         return repository.getIdBySex(sex)
     }
 
-    fun getDadsWithChildren() : LiveData<List<DadWithChildren>>{
+    fun getDadsWithChildren() : LiveData<List<DadWithChildrenNoRoom>> {
         return repository.getDadsWithChildren()
     }
 
-    fun getMomsWithChildren() : LiveData<List<MomWithChildren>>{
+    fun getMomsWithChildren() : LiveData<List<MomWithChildrenNoRoom>> {
         return repository.getMomsWithChildren()
     }
 

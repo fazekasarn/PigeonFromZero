@@ -1,10 +1,12 @@
 package hu.bme.aut.android.pigeonfromzero
 
+import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
@@ -12,6 +14,7 @@ import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.findNavController
 import hu.bme.aut.android.pigeonfromzero.databinding.ActivityMainBinding
+import hu.bme.aut.android.pigeonfromzero.fragments.ContactDialogFragment
 import hu.bme.aut.android.pigeonfromzero.fragments.HomeFragmentDirections
 
 class MainActivity : AppCompatActivity() {
@@ -43,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         //sharedpreferences alapján switch beállítása
         val sp = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-        val nightMode : Boolean = sp.getBoolean("nightMode", false)
+        val nightMode: Boolean = sp.getBoolean("nightMode", false)
         if (nightMode) {
             switch.isChecked = nightMode
         } else {
@@ -72,6 +75,9 @@ class MainActivity : AppCompatActivity() {
                         binding.drawerLayout.closeDrawer(GravityCompat.START)
                     }
                 }
+                R.id.nav_contacts -> {
+                    ContactDialogFragment().show(supportFragmentManager, "contactDialog")
+                }
             }
             true
         }
@@ -94,5 +100,4 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
-
 }

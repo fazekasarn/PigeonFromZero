@@ -29,6 +29,7 @@ class EditFragment : Fragment() {
         changeViewModel = ViewModelProvider(this).get(ChangeViewModel::class.java)
         changeViewModel.getPigeonById(pId).observe(viewLifecycleOwner, Observer { pigeon ->
             binding.etNumber.setText(pigeon.pigeonId)
+            binding.etCountry.setText(pigeon.country)
             binding.etName.setText(pigeon.name)
             binding.etBirth.setText(pigeon.birth.toString())
             binding.spnrSex.adapter = ArrayAdapter(
@@ -77,7 +78,7 @@ class EditFragment : Fragment() {
             var selectedDad :String? = null
             if (binding.spnrDad.selectedItem != "-")
                 selectedDad = binding.spnrDad.selectedItem.toString()
-            val newPigeon = Pigeon(choosenPigeon.pigeonId, binding.etName.text.toString(), binding.etBirth.text.toString().toInt(), selectedSex, binding.etScore.text.toString(), selectedDad, selectedMom)
+            val newPigeon = Pigeon(choosenPigeon.pigeonId, binding.etCountry.text.toString(), binding.etName.text.toString(), binding.etBirth.text.toString().toInt(), selectedSex, binding.etScore.text.toString(), selectedDad, selectedMom)
             changeViewModel.update(newPigeon)
             hideKeyboard()
             requireActivity().onBackPressed()

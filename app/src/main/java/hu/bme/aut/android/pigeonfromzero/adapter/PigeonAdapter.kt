@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.android.pigeonfromzero.databinding.RowItemBinding
 import hu.bme.aut.android.pigeonfromzero.model.Pigeon
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 class PigeonAdapter : ListAdapter<Pigeon, PigeonAdapter.ViewHolder>(itemCallback) {
 
@@ -32,13 +34,14 @@ class PigeonAdapter : ListAdapter<Pigeon, PigeonAdapter.ViewHolder>(itemCallback
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentPigeon = getItem(position)
 
-        val remainder = currentPigeon.birth%100
+        /*val form: NumberFormat = DecimalFormat("00")
+        val remainder = form.format(currentPigeon.birth%100)
         val short = when(currentPigeon.sex){
             Pigeon.Sex.MALE -> "H"
             Pigeon.Sex.FEMALE -> "T"
             Pigeon.Sex.UNKNOWN -> "?"
-        }
-        holder.binding.tvLongNumber.text = "HU-$remainder-${currentPigeon.pigeonId}-$short"
+        }*/
+        holder.binding.tvLongNumber.text = currentPigeon.toIdentifier() //"${currentPigeon.country}-$remainder-${currentPigeon.pigeonId}-$short"
         holder.binding.tvName.text = currentPigeon.name
 
         holder.binding.bDelete.setOnClickListener {

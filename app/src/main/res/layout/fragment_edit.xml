@@ -14,11 +14,19 @@
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <EditText
+        android:id="@+id/etCountry"
+        android:hint="Ország-kód"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <EditText
         android:id="@+id/etNumber"
         android:hint="Gyűrűszám"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/etCountry"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <EditText

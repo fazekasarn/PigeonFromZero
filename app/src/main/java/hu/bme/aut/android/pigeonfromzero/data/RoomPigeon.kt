@@ -7,6 +7,7 @@ import java.io.Serializable
 @Entity(tableName = "pigeon")
 data class RoomPigeon (
     @PrimaryKey(autoGenerate = false) var pigeonId :String,
+    @ColumnInfo(name = "country") var country :String,
     @ColumnInfo(name = "name") var name :String,
     @ColumnInfo(name = "birth") var birth :Int,
     @ColumnInfo(name = "sex") var sex :Pigeon.Sex,

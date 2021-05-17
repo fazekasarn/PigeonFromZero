@@ -78,11 +78,11 @@ class CreateFragment : Fragment() {
             else -> Pigeon.Sex.UNKNOWN
         }
         changeViewModel.insert(
-            Pigeon(binding.etNumber.text.toString(), binding.etName.text.toString(), binding.etBirth.text.toString().toInt(), selectedSex, binding.etScore.text.toString(), selectedDad, selectedMom)
+            Pigeon(binding.etNumber.text.toString(), binding.etCountry.text.toString(), binding.etName.text.toString(), binding.etBirth.text.toString().toInt(), selectedSex, binding.etScore.text.toString(), selectedDad, selectedMom)
         )
     }
 
-    fun hideKeyboard(){
+    private fun hideKeyboard(){
         val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(requireView().windowToken, 0)
     }

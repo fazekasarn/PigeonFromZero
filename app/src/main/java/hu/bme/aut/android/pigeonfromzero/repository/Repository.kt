@@ -70,6 +70,7 @@ class Repository(private val pigeonDao: PigeonDAO) {
     private fun RoomPigeon.toDomainModel(): Pigeon {
         return Pigeon(
             pigeonId = pigeonId,
+            country = country,
             name = name,
             birth = birth,
             sex = sex,
@@ -82,6 +83,7 @@ class Repository(private val pigeonDao: PigeonDAO) {
     private fun Pigeon.toRoomModel(): RoomPigeon {
         return RoomPigeon(
             pigeonId = pigeonId,
+            country = country,
             name = name,
             birth = birth,
             sex = sex,

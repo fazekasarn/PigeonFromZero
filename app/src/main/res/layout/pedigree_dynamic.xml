@@ -15,7 +15,7 @@
         <TextView
             android:id="@+id/tvHeader"
             android:layout_width="match_parent"
-            android:layout_height="100px"
+            android:layout_height="wrap_content"
             android:layout_margin="10px"
             android:textAlignment="center"
             android:textSize="22sp"
@@ -32,77 +32,77 @@
             android:layout_height="@dimen/first_gen_height"
             android:layout_marginStart="@dimen/family_margin"
             android:layout_marginEnd="@dimen/parents_offset"
+            android:background="@drawable/border"
             app:layout_constraintBottom_toTopOf="@id/tvFooter"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="@id/textView2"
-            app:layout_constraintTop_toBottomOf="@id/tvHeader"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/tvHeader"/>
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="@dimen/first_gen_height"
             android:layout_marginStart="@dimen/parents_offset"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/placeholder_view"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/textView21"
-            app:layout_constraintTop_toBottomOf="@id/tvHeader"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/tvHeader" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="0dp"
             android:layout_height="@dimen/first_gen_height"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/tvFooter"
             app:layout_constraintLeft_toLeftOf="@id/textView2"
             app:layout_constraintRight_toRightOf="@id/textView2"
-            app:layout_constraintTop_toBottomOf="@id/placeholder_view"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/placeholder_view" />
 
         <TextView
             android:id="@+id/textView21"
             android:layout_width="0dp"
             android:layout_height="@dimen/first_gen_height"
             android:layout_marginStart="@dimen/family_margin"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintLeft_toRightOf="@id/textView2"
             app:layout_constraintRight_toLeftOf="@id/textView31"
-            app:layout_constraintTop_toBottomOf="@id/tvHeader"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/tvHeader" />
 
         <TextView
             android:id="@+id/textView22"
             android:layout_width="0dp"
             android:layout_height="@dimen/first_gen_height"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/textView23"
             app:layout_constraintLeft_toLeftOf="@id/textView21"
             app:layout_constraintRight_toRightOf="@id/textView21"
-            app:layout_constraintTop_toBottomOf="@id/textView21"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/textView21" />
 
         <TextView
             android:id="@+id/textView23"
             android:layout_width="0dp"
             android:layout_height="@dimen/first_gen_height"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/textView24"
             app:layout_constraintLeft_toLeftOf="@id/textView21"
             app:layout_constraintRight_toRightOf="@id/textView21"
-            app:layout_constraintTop_toBottomOf="@id/textView22"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/textView22" />
 
         <TextView
             android:id="@+id/textView24"
             android:layout_width="0dp"
             android:layout_height="@dimen/first_gen_height"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/tvFooter"
             app:layout_constraintLeft_toLeftOf="@id/textView21"
-            app:layout_constraintRight_toRightOf="@id/textView21"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintRight_toRightOf="@id/textView21" />
 
         <TextView
             android:id="@+id/textView31"
@@ -110,92 +110,92 @@
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/family_margin"
             android:layout_marginBottom="@dimen/family_margin"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/textView32"
             app:layout_constraintLeft_toRightOf="@id/textView21"
             app:layout_constraintRight_toLeftOf="@id/textView41"
-            app:layout_constraintTop_toTopOf="@id/textView21"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toTopOf="@id/textView21" />
 
         <TextView
             android:id="@+id/textView32"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@id/textView21"
             app:layout_constraintLeft_toLeftOf="@id/textView31"
             app:layout_constraintRight_toRightOf="@id/textView31"
-            app:layout_constraintTop_toBottomOf="@id/textView31"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/textView31" />
 
         <TextView
             android:id="@+id/textView33"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/family_margin"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/textView34"
             app:layout_constraintLeft_toLeftOf="@id/textView31"
             app:layout_constraintRight_toRightOf="@id/textView31"
-            app:layout_constraintTop_toTopOf="@id/textView22"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toTopOf="@id/textView22" />
 
         <TextView
             android:id="@+id/textView34"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@id/textView22"
             app:layout_constraintLeft_toLeftOf="@id/textView31"
             app:layout_constraintRight_toRightOf="@id/textView31"
-            app:layout_constraintTop_toBottomOf="@id/textView33"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/textView33" />
 
         <TextView
             android:id="@+id/textView35"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/family_margin"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/textView36"
             app:layout_constraintLeft_toLeftOf="@id/textView31"
             app:layout_constraintRight_toRightOf="@id/textView31"
-            app:layout_constraintTop_toTopOf="@id/textView23"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toTopOf="@id/textView23" />
 
         <TextView
             android:id="@+id/textView36"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@id/textView23"
             app:layout_constraintLeft_toLeftOf="@id/textView31"
             app:layout_constraintRight_toRightOf="@id/textView31"
-            app:layout_constraintTop_toBottomOf="@id/textView35"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/textView35" />
 
         <TextView
             android:id="@+id/textView37"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/family_margin"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/textView38"
             app:layout_constraintLeft_toLeftOf="@id/textView31"
             app:layout_constraintRight_toRightOf="@id/textView31"
-            app:layout_constraintTop_toTopOf="@id/textView24"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toTopOf="@id/textView24" />
 
         <TextView
             android:id="@+id/textView38"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@id/textView24"
             app:layout_constraintLeft_toLeftOf="@id/textView31"
             app:layout_constraintRight_toRightOf="@id/textView31"
-            app:layout_constraintTop_toBottomOf="@id/textView37"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/textView37" />
 
         <TextView
             android:id="@+id/textView41"
@@ -204,197 +204,197 @@
             android:layout_marginStart="@dimen/family_margin"
             android:layout_marginEnd="@dimen/gutter"
             android:layout_marginBottom="@dimen/family_margin"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/textView42"
             app:layout_constraintLeft_toRightOf="@id/textView31"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textView31"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toTopOf="@id/textView31" />
 
         <TextView
             android:id="@+id/textView42"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@id/textView31"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
-            app:layout_constraintTop_toBottomOf="@id/textView41"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/textView41" />
 
         <TextView
             android:id="@+id/textView43"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/family_margin"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/textView44"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
-            app:layout_constraintTop_toTopOf="@id/textView32"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toTopOf="@id/textView32" />
 
         <TextView
             android:id="@+id/textView44"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@id/textView32"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
-            app:layout_constraintTop_toBottomOf="@id/textView43"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/textView43" />
 
         <TextView
             android:id="@+id/textView45"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/family_margin"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/textView46"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
-            app:layout_constraintTop_toTopOf="@id/textView33"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toTopOf="@id/textView33" />
 
         <TextView
             android:id="@+id/textView46"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@id/textView33"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
-            app:layout_constraintTop_toBottomOf="@id/textView45"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/textView45" />
 
         <TextView
             android:id="@+id/textView47"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/family_margin"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/textView48"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
-            app:layout_constraintTop_toTopOf="@id/textView34"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toTopOf="@id/textView34" />
 
         <TextView
             android:id="@+id/textView48"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@id/textView34"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
-            app:layout_constraintTop_toBottomOf="@id/textView47"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/textView47" />
 
         <TextView
             android:id="@+id/textView49"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/family_margin"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/textView410"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
-            app:layout_constraintTop_toTopOf="@id/textView35"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toTopOf="@id/textView35" />
 
         <TextView
             android:id="@+id/textView410"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@id/textView35"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
-            app:layout_constraintTop_toBottomOf="@id/textView49"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/textView49" />
 
         <TextView
             android:id="@+id/textView411"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/family_margin"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/textView412"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
-            app:layout_constraintTop_toTopOf="@id/textView36"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toTopOf="@id/textView36" />
 
         <TextView
             android:id="@+id/textView412"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@id/textView36"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
-            app:layout_constraintTop_toBottomOf="@id/textView411"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/textView411" />
 
         <TextView
             android:id="@+id/textView413"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/family_margin"
+            android:background="@drawable/border"
             android:ellipsize="end"
-            android:text="TextView"
+            android:text="NL 051844389 M\nThe Johhny Boy\nSell for 40.000 euro"
             app:layout_constraintBottom_toTopOf="@id/textView414"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
-            app:layout_constraintTop_toTopOf="@id/textView37"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toTopOf="@id/textView37" />
 
         <TextView
             android:id="@+id/textView414"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@id/textView37"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
-            app:layout_constraintTop_toBottomOf="@id/textView413"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/textView413" />
 
         <TextView
             android:id="@+id/textView415"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/family_margin"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@id/textView416"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
-            app:layout_constraintTop_toTopOf="@id/textView38"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toTopOf="@id/textView38" />
 
         <TextView
             android:id="@+id/textView416"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/border"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@id/textView38"
             app:layout_constraintLeft_toLeftOf="@id/textView41"
             app:layout_constraintRight_toRightOf="@id/textView41"
-            app:layout_constraintTop_toBottomOf="@id/textView415"
-            style="@style/PedigreeTextViewStyle"/>
+            app:layout_constraintTop_toBottomOf="@id/textView415" />
 
         <TextView
             android:id="@+id/tvFooter"
             android:layout_width="wrap_content"
-            android:layout_height="250px"
+            android:layout_height="wrap_content"
             android:layout_margin="0px"
             android:singleLine="false"
+            android:text="Fazekas Károly\nTel: +36 20 123 4567\nPilisvörösvár"
             android:textSize="15sp"
-            android:gravity="center"
+            android:background="@drawable/border"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/textView24"/>
+            app:layout_constraintLeft_toLeftOf="parent" />
 
         <View
             android:id="@+id/placeholder_view"
@@ -403,14 +403,6 @@
             app:layout_constraintBottom_toTopOf="@id/tvFooter"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvHeader" />
-
-        <View
-            android:layout_width="1860px"
-            android:layout_height="2631px"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -14,13 +14,9 @@ import kotlinx.coroutines.launch
 class ChangeViewModel () : ViewModel(){
     private val repository: Repository
 
-    //var choosenPigeon: LiveData<Pigeon>
     val allPigeons: LiveData<List<Pigeon>>
     val maleSpinnerData : LiveData<List<String>>
     val femaleSpinnerData : LiveData<List<String>>
-    val allDadsWithChildren :LiveData<List<DadWithChildrenNoRoom>>
-    val allMomsWithChildren :LiveData<List<MomWithChildrenNoRoom>>
-    var firstGenParents: List<Pigeon?> = emptyList()
 
     init {
         val pigeonDao = PigeonApplication.pigeonDatabase.pigeonDao()
@@ -28,10 +24,6 @@ class ChangeViewModel () : ViewModel(){
         allPigeons = repository.findAllPigeons()
         maleSpinnerData = getIdBySex(Pigeon.Sex.MALE)
         femaleSpinnerData = getIdBySex(Pigeon.Sex.FEMALE)
-        allDadsWithChildren = getDadsWithChildren()
-        allMomsWithChildren = getMomsWithChildren()
-        //choosenPigeon = repository.getPigeonById(choosenPigeonId)
-        //Log.d("TAG", choosenPigeonId)
     }
 
     fun insert(pigeon: Pigeon) = viewModelScope.launch {
@@ -49,13 +41,4 @@ class ChangeViewModel () : ViewModel(){
     fun getIdBySex(sex :Pigeon.Sex) : LiveData<List<String>>{
         return repository.getIdBySex(sex)
     }
-
-    fun getDadsWithChildren() : LiveData<List<DadWithChildrenNoRoom>> {
-        return repository.getDadsWithChildren()
-    }
-
-    fun getMomsWithChildren() : LiveData<List<MomWithChildrenNoRoom>> {
-        return repository.getMomsWithChildren()
-    }
-
 }

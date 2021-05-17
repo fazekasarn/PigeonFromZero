@@ -10,16 +10,19 @@ import hu.bme.aut.android.pigeonfromzero.data.MomWithChildrenNoRoom
 import hu.bme.aut.android.pigeonfromzero.model.Pigeon
 import hu.bme.aut.android.pigeonfromzero.repository.Repository
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class DetailsViewModel(choosenPigeonId: String) : ViewModel() {
     private val repository: Repository
 
-    val basic = "VALAMI RANDOM"
     var choosenPigeon: LiveData<Pigeon>
     val allPigeons: LiveData<List<Pigeon>>
     val allDadsWithChildren: LiveData<List<DadWithChildrenNoRoom>>
     val allMomsWithChildren: LiveData<List<MomWithChildrenNoRoom>>
-    var firstGenParents: List<Pigeon?> = emptyList()
+    var firstGenParents = ArrayList<Pigeon?>()
+    var secondGenParents = ArrayList<Pigeon?>()
+    var thirdGenParents = ArrayList<Pigeon?>()
+    var fourthGenParents = ArrayList<Pigeon?>()
 
     init {
         val pigeonDao = PigeonApplication.pigeonDatabase.pigeonDao()
@@ -36,32 +39,5 @@ class DetailsViewModel(choosenPigeonId: String) : ViewModel() {
 
     fun getMomsWithChildren(): LiveData<List<MomWithChildrenNoRoom>> {
         return repository.getMomsWithChildren()
-    }
-
-    fun refreshFirstGenFamily() {
-        var dadFound = false
-        var momFound = false
-        val tempList = emptyList<Pigeon?>().toMutableList()
-        if (allDadsWithChildren.value != null)
-            for (item in allDadsWithChildren.value!!) {
-                if (item.children.contains(choosenPigeon.value)) {
-                    tempList.add(item.pigeon)
-                    dadFound = true
-                }
-            }
-        if (!dadFound) {
-            tempList.add(null)
-        }
-        if (allMomsWithChildren.value != null)
-        for (item in allMomsWithChildren.value!!) {
-            if (item.children.contains(choosenPigeon.value)) {
-                tempList.add(item.pigeon)
-                momFound = true
-            }
-        }
-        if (!momFound) {
-            tempList.add(null)
-        }
-        firstGenParents = tempList.toList()
     }
 }

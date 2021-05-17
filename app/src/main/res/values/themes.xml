@@ -25,4 +25,9 @@
         <item name="android:textColorSecondary">@color/white</item>
     </style>
 
+    <style name="PedigreeTextViewStyle" parent="Theme.PigeonFromZero">
+        <item name="android:padding">@dimen/pedigree_textview_padding</item>
+        <item name="android:background">@drawable/border</item>
+    </style>
+
 </resources>
